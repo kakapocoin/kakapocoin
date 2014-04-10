@@ -8,15 +8,23 @@ Copyright (c) 2011-2013 Kakapocoin Developers
 
 What is Kakapocoin?
 ----------------
+The Kakapo is critically endangered; as of March 2014, with an additional six[4] from the first hatchings since 2011, the total known population is only 130 living individuals. The kakpo coin reflects these numbers in everyway.
 
-Kakapocoin is a lite version of Bitcoin using scrypt as a proof-of-work algorithm.
- - 2.5 minute block targets
- - subsidy halves in 840k blocks (~4 years)
- - ~84 million total coins
+Kakapocoin is a version Litecoin which in turn is a version of Bitcoin using scrypt as a proof-of-work algorithm.
+# - 2.5 minute block targets
+# - subsidy halves in 840k blocks (~4 years)
+# - ~84 million total coins
+ - 1.5 minute block targets
+ - subsidy halves in 130k blocks (~1.3 years)
+ - 130 million total coins
+ - 130 coins per block
+ - 1300 blocks to retarget difficulty
 
-The rest is the same as Bitcoin.
- - 50 coins per block
- - 2016 blocks to retarget difficulty
+# The rest is the same as Bitcoin.
+# - 50 coins per block
+# - 2016 blocks to retarget difficulty
+
+
 
 For more information, as well as an immediately useable, binary version of
 the Kakapocoin client sofware, see http://www.kakapocoin.org.
