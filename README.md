@@ -3,12 +3,12 @@ Kakapocoin integration/staging tree
 
 http://www.kakapocoin.org
 
-Copyright (c) 2009-2013 Bitcoin Developers
-Copyright (c) 2011-2013 Kakapocoin Developers
+Copyright (c) 2009 - 2013 Bitcoin Developers
+Copyright (c) 2014 - Kakapocoin Developers
 
 What is Kakapocoin?
 ----------------
-The Kakapo is critically endangered; as of March 2014, with an additional six[4] from the first hatchings since 2011, the total known population is only 130 living individuals. The kakpo coin reflects these numbers in everyway.
+The Kakapo Parrot of New Zealand is critically endangered; as of March 2014, with an additional six[4] from the first hatchings since 2011, the total known population is only 130 living individuals. The kakpocoin reflects these numbers in it's configuration.
 
 Kakapocoin is a version Litecoin which in turn is a version of Bitcoin using scrypt as a proof-of-work algorithm.
  - 1.5 minute block targets
