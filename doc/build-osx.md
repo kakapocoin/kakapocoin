@@ -8,11 +8,14 @@ Authors
 * Douglas Huff <dhuff@jrbobdobbs.org>
 * Colin Dean <cad@cad.cx>
 * Gavin Andresen <gavinandresen@gmail.com>
+* Chris Long <alcamie@gmail.com>
 
 License
 -------
 
 Copyright (c) 2009-2012 Bitcoin Developers
+Copyright (c) 2014-20xx Kakapocoin Developers
+
 
 Distributed under the MIT/X11 software license, see the accompanying
 file COPYING or http://www.opensource.org/licenses/mit-license.php.
@@ -76,7 +79,7 @@ Installing the dependencies using MacPorts is very straightforward.
 
 1. Clone the github tree to get the source code and go into the directory.
 
-        git clone git@github.com:kakapocoin-project/kakapocoin.git kakapocoin
+        git clone git@github.com:kakapocoin/kakapocoin.git kakapocoin
         cd kakapocoin
 
 2.  Build kakapocoind:
@@ -111,7 +114,7 @@ Rerunning "openssl version" should now return the correct version.
 
 1. Clone the github tree to get the source code and go into the directory.
 
-        git clone git@github.com:kakapocoin-project/kakapocoin.git kakapocoin
+        git clone git@github.com:kakapocoin/kakapocoin.git kakapocoin
         cd kakapocoin
 
 2.  Modify source in order to pick up the `openssl` library.
@@ -137,7 +140,7 @@ Creating a release build
 A kakapocoind binary is not included in the Kakapocoin-Qt.app bundle. You can ignore
 this section if you are building `kakapocoind` for your own use.
 
-If you are building `litecond` for others, your build machine should be set up
+If you are building `kakapocoind` for others, your build machine should be set up
 as follows for maximum compatibility:
 
 All dependencies should be compiled with these flags:

@@ -1,4 +1,4 @@
-Name Litecoin
+Name Kakapocoin
 
 RequestExecutionLevel highest
 SetCompressor /SOLID lzma
@@ -6,7 +6,7 @@ SetCompressor /SOLID lzma
 # General Symbol Definitions
 !define REGKEY "SOFTWARE\$(^Name)"
 !define VERSION 0.8.6.2
-!define COMPANY "Litecoin project"
+!define COMPANY "Kakkapocoin project"
 !define URL http://www.kakapocoin.org/
 
 # MUI Symbol Definitions
@@ -46,13 +46,13 @@ Var StartMenuGroup
 
 # Installer attributes
 OutFile kakapocoin-0.8.6.2-win32-setup.exe
-InstallDir $PROGRAMFILES\Litecoin
+InstallDir $PROGRAMFILES\Kakapocoin
 CRCCheck on
 XPStyle on
 BrandingText " "
 ShowInstDetails show
 VIProductVersion 0.8.6.2
-VIAddVersionKey ProductName Litecoin
+VIAddVersionKey ProductName Kakapocoin
 VIAddVersionKey ProductVersion "${VERSION}"
 VIAddVersionKey CompanyName "${COMPANY}"
 VIAddVersionKey CompanyWebsite "${URL}"
@@ -87,8 +87,8 @@ Section -post SEC0001
     WriteUninstaller $INSTDIR\uninstall.exe
     !insertmacro MUI_STARTMENU_WRITE_BEGIN Application
     CreateDirectory $SMPROGRAMS\$StartMenuGroup
-    CreateShortcut "$SMPROGRAMS\$StartMenuGroup\Litecoin.lnk" $INSTDIR\kakapocoin-qt.exe
-    CreateShortcut "$SMPROGRAMS\$StartMenuGroup\Uninstall Litecoin.lnk" $INSTDIR\uninstall.exe
+    CreateShortcut "$SMPROGRAMS\$StartMenuGroup\Kakapocoin.lnk" $INSTDIR\kakapocoin-qt.exe
+    CreateShortcut "$SMPROGRAMS\$StartMenuGroup\Uninstall Kakapocoin.lnk" $INSTDIR\uninstall.exe
     !insertmacro MUI_STARTMENU_WRITE_END
     WriteRegStr HKCU "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\$(^Name)" DisplayName "$(^Name)"
     WriteRegStr HKCU "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\$(^Name)" DisplayVersion "${VERSION}"
@@ -99,7 +99,7 @@ Section -post SEC0001
     WriteRegDWORD HKCU "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\$(^Name)" NoModify 1
     WriteRegDWORD HKCU "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\$(^Name)" NoRepair 1
     WriteRegStr HKCR "kakapocoin" "URL Protocol" ""
-    WriteRegStr HKCR "kakapocoin" "" "URL:Litecoin"
+    WriteRegStr HKCR "kakapocoin" "" "URL:Kakapocoin"
     WriteRegStr HKCR "kakapocoin\DefaultIcon" "" $INSTDIR\kakapocoin-qt.exe
     WriteRegStr HKCR "kakapocoin\shell\open\command" "" '"$INSTDIR\kakapocoin-qt.exe" "%1"'
 SectionEnd
@@ -129,9 +129,9 @@ SectionEnd
 
 Section -un.post UNSEC0001
     DeleteRegKey HKCU "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\$(^Name)"
-    Delete /REBOOTOK "$SMPROGRAMS\$StartMenuGroup\Uninstall Litecoin.lnk"
-    Delete /REBOOTOK "$SMPROGRAMS\$StartMenuGroup\Litecoin.lnk"
-    Delete /REBOOTOK "$SMSTARTUP\Litecoin.lnk"
+    Delete /REBOOTOK "$SMPROGRAMS\$StartMenuGroup\Uninstall Kakapocoin.lnk"
+    Delete /REBOOTOK "$SMPROGRAMS\$StartMenuGroup\Kakapocoin.lnk"
+    Delete /REBOOTOK "$SMSTARTUP\Kakapocoin.lnk"
     Delete /REBOOTOK $INSTDIR\uninstall.exe
     Delete /REBOOTOK $INSTDIR\debug.log
     Delete /REBOOTOK $INSTDIR\db.log

@@ -31,7 +31,10 @@ CTxMemPool mempool;
 unsigned int nTransactionsUpdated = 0;
 
 map<uint256, CBlockIndex*> mapBlockIndex;
-uint256 hashGenesisBlock("0x12a765e31ffd4059bada1e25190f6e98c99d9714d334efa41a195a7e7e04bfe2");
+//uint256 hashGenesisBlock("0x12a765e31ffd4059bada1e25190f6e98c99d9714d334efa41a195a7e7e04bfe2");
+uint256 hashGenesisBlock("0x6c258dfa080389d6fbfd56c0e202dc7ca709674278c9cb592ef9377db8e961e9");
+//uint256 hashGenesisBlock("f6568679828db77dd3772905b00b8bf74bc6a1c95d4a8000b9e5ab7b3b4d191e");
+
 static CBigNum bnProofOfWorkLimit(~uint256(0) >> 20); // Kakapocoin: starting difficulty is 1 / 2^12
 CBlockIndex* pindexGenesisBlock = NULL;
 int nBestHeight = -1;
@@ -1065,14 +1068,14 @@ int64 static GetBlockValue(int nHeight, int64 nFees)
 {
     int64 nSubsidy = 50 * COIN;
 
-    // Subsidy is cut in half every 840000 blocks, which will occur approximately every 4 years
-    nSubsidy >>= (nHeight / 840000); // Kakapocoin: 840k blocks in ~4 years
+    // Subsidy is cut in half every 1300000 blocks, which will occur approximately every 4 years
+    nSubsidy >>= (nHeight / 1300000); // Kakapocoin: 1300k blocks in ~4 years
 
     return nSubsidy + nFees;
 }
 
-static const int64 nTargetTimespan = 3.5 * 24 * 60 * 60; // Kakapocoin: 3.5 days
-static const int64 nTargetSpacing = 2.5 * 60; // Kakapocoin: 2.5 minutes
+static const int64 nTargetTimespan = 1.3 * 24 * 60 * 60; // Kakapocoin: 1.3 days
+static const int64 nTargetSpacing = 1.3 * 60; // Kakapocoin: 1.3 minutes
 static const int64 nInterval = nTargetTimespan / nTargetSpacing;
 
 //
@@ -1619,7 +1622,7 @@ bool CBlock::ConnectBlock(CValidationState &state, CBlockIndex* pindex, CCoinsVi
     // See BIP30 and http://r6.ca/blog/20120206T005236Z.html for more information.
     // This logic is not necessary for memory pool transactions, as AcceptToMemoryPool
     // already refuses previously-known transaction ids entirely.
-    // This rule was originally applied all blocks whose timestamp was after October 1, 2012, 0:00 UTC.
+    // This rule was originally applied all blocks whose timestamp was after April 10, 2014, 13:13 UTC.
     // Now that the whole chain is irreversibly beyond that time it is applied to all blocks,
     // this prevents exploiting the issue against nodes in their initial block download.
     bool fEnforceBIP30 = true;
@@ -1632,8 +1635,8 @@ bool CBlock::ConnectBlock(CValidationState &state, CBlockIndex* pindex, CCoinsVi
         }
     }
 
-    // BIP16 didn't become active until Oct 1 2012
-    int64 nBIP16SwitchTime = 1349049600;
+    // BIP16 didn't become active until Apr 10 2014
+    int64 nBIP16SwitchTime = 1397135580;
     bool fStrictPayToScriptHash = (pindex->nTime >= nBIP16SwitchTime);
 
     unsigned int flags = SCRIPT_VERIFY_NOCACHE |
@@ -2077,7 +2080,7 @@ bool CBlock::CheckBlock(CValidationState &state, bool fCheckPOW, bool fCheckMerk
         return state.DoS(100, error("CheckBlock() : size limits failed"));
 
     // Kakapocoin: Special short-term limits to avoid 10,000 BDB lock limit:
-    if (GetBlockTime() < 1376568000)  // stop enforcing 15 August 2013 00:00:00
+    if (GetBlockTime() < 1423833180)  // stop enforcing 13 February 2015 13:13:00
     {
         // Rule is: #unique txids referenced <= 4,500
         // ... to prevent 10,000 BDB lock exhaustion on old clients
@@ -2091,7 +2094,7 @@ bool CBlock::CheckBlock(CValidationState &state, bool fCheckPOW, bool fCheckMerk
         }
         size_t nTxids = setTxIn.size();
         if (nTxids > 4500)
-            return error("CheckBlock() : 15 August maxlocks violation");
+            return error("CheckBlock() : 13 February maxlocks violation");
     }
 
     // Check proof of work matches claimed amount
@@ -2723,7 +2726,7 @@ bool LoadBlockIndex()
         pchMessageStart[1] = 0xc1;
         pchMessageStart[2] = 0xb7;
         pchMessageStart[3] = 0xdc;
-        hashGenesisBlock = uint256("0xf5ae71e26c74beacc88382716aced69cddf3dffff24f384e1808905e0188f68f");
+        hashGenesisBlock = uint256("1d53e2131c7ddd9613e41251dde513a11eaea53b00eba40be5d993a28abfd148");
     }
 
     //
@@ -2756,7 +2759,7 @@ bool InitBlockIndex() {
         //   vMerkleTree: 97ddfbbae6
 
         // Genesis block
-        const char* pszTimestamp = "NY Times 05/Oct/2011 Steve Jobs, Apple’s Visionary, Dies at 56";
+        const char* pszTimestamp = "http://news.mongabay.com/2014/0410-hance-edge-birds.html 09/Apr/2014 The kakapo, a flightless parrot from New Zealand, is number four on the EDGE Birds";
         CTransaction txNew;
         txNew.vin.resize(1);
         txNew.vout.resize(1);
@@ -2768,14 +2771,14 @@ bool InitBlockIndex() {
         block.hashPrevBlock = 0;
         block.hashMerkleRoot = block.BuildMerkleTree();
         block.nVersion = 1;
-        block.nTime    = 1317972665;
+        block.nTime    = 1397056380;
         block.nBits    = 0x1e0ffff0;
-        block.nNonce   = 2084524493;
+        block.nNonce   = 303480;
 
         if (fTestNet)
         {
-            block.nTime    = 1317798646;
-            block.nNonce   = 385270584;
+            block.nTime    = 1397056380;
+            block.nNonce   = 385130584;
         }
 
         //// debug print
@@ -2783,7 +2786,8 @@ bool InitBlockIndex() {
         printf("%s\n", hash.ToString().c_str());
         printf("%s\n", hashGenesisBlock.ToString().c_str());
         printf("%s\n", block.hashMerkleRoot.ToString().c_str());
-        assert(block.hashMerkleRoot == uint256("0x97ddfbbae6be97fd6cdf3e7ca13232a3afff2353e29badfab7f73011edd4ced9"));
+        //assert(block.hashMerkleRoot == uint256("0x97ddfbbae6be97fd6cdf3e7ca13232a3afff2353e29badfab7f73011edd4ced9"));
+        assert(block.hashMerkleRoot == uint256("0x1245c25529f0ebc5f8b1c97db2c1ac4a667b11dfe2b7042251a2d52940aee227"));
         block.print();
         assert(hash == hashGenesisBlock);
 
